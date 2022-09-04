@@ -33,11 +33,13 @@ if(!$connection){
     </tr>
   </thead>
   <tbody>
+  
 <?php $query ="SELECT id,email,password from students";
 $result=mysqli_query($connection,$query) ;
 if(mysqli_num_rows($result)>0){
 while ($row =mysqli_fetch_assoc($result)){
-echo '<tr>'.'<td>'.$row['id'].'</td>'.'<td>'.$row['email'].'</td>'.'<td>'.$row['password'].'</td>'.'<tr>';
+  echo '<tr>' . '<td>' . $row['id'] . '</td>' . '<td>' . $row['email'] . '</td>' . '<td>' . $row['password']  . '</td>' . '<td><a href="editdb.php?id=' . $row['id'] . '">Edit</a></td>' . '<td><form action="deldb.php" method="POST"><input type="hidden" name="id" value="' . $row['id'] . '"> <button type="button" class="btn btn-danger" id="delete-btn"0>DELETE</button> </form></td>' . '</tr>';
+
 
 };
 
